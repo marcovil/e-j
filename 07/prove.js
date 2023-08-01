@@ -27,3 +27,12 @@ function Oggetto2() {
 var ogg2 = new Oggetto2();
 var torna = ogg2.funzione(23);
 console.log(torna);
+
+console.log("assignment");
+
+var a = 2;
+var b = 3;
+a = b = 45;
+console.log(a);
+console.log(b);
+console.log(a = 345);
