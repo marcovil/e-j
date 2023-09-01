@@ -2,22 +2,35 @@
 
 <style>
   .trail { /* className for the trail elements */
-    position: absolute;
-    height: 6px; width: 6px;
-    border-radius: 3px;
-    background: teal;
+      position: absolute;
+      height: 6px; width: 6px;
+      border-radius: 3px;
+      background: teal;
   }
   body {
-    height: 300px;
+      height: 300px;
   }
 </style>
 
+<body>
 <script>
-    addEventListener("mousemove", function(event) {
-        var trail = document.createElement("div");
-        trail.className = "trail";
-        trail.style.left = (event.pageX - 3) + "px";
-        trail.style.top = (event.pageY - 3) + "px";
-        document.body.appendChild(trail);
-    });
+  var colours = ["red","blue","black","green","violet","tomato"];
+  var index = 0;
+  var trails = [];
+  
+  for (var i = 0; i < colours.length; i++) {
+      var trail = document.createElement("div");
+      trail.className = "trail";
+      document.body.appendChild(trail);
+      trails.push(trail);
+  }
+  
+  addEventListener("mousemove", function(event) {
+      var trail = trails[index];
+      trail.style.left = (event.pageX - 3) + "px";
+      trail.style.top = (event.pageY - 3) + "px";
+      trail.style.background = colours[index];
+      index = (index + 1) % colours.length;
+  });
 </script>
+</body>
