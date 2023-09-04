@@ -1,0 +1,35 @@
+<!doctype html>
+
+<div id="wrapper">
+  <div data-tabname="one">Tab one</div>
+  <div data-tabname="two">Tab two</div>
+  <div data-tabname="three">Tab three</div>
+</div>
+<script>
+  function asTabs(node) {
+      var parent_node = node.parentNode;
+      var div_nodes = node.getElementsByTagName('div');
+      var child_nodes = Array.prototype.slice.call(div_nodes);
+      
+      for (var i = 1; i < child_nodes.length; i++) {
+	  child_nodes[i].style.display = "none";
+      }
+      
+      child_nodes.forEach(
+	  function(n) {
+	      var button = document.createElement("button");
+	      button.textContent = n.getAttribute("data-tabname");
+	      button.addEventListener("click",
+				      function() {
+					  child_nodes.forEach(function(el) {
+					      if (el.getAttribute("data-tabname") != button.textContent)
+						  el.style.display = "none";
+					      if (el.getAttribute("data-tabname") == button.textContent)
+						  el.style.display = "";
+					  })});
+	      parent_node.insertBefore(button,node);
+	  }
+      );
+  }
+  asTabs(document.querySelector("#wrapper"));
+</script>
