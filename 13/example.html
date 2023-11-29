@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ciao a tutti.</title>
+  </head>
+  <body>
+    <p>Ma ciao veramente</p>
+    <p>Altra riga</p>
+    <p>Abcd</p>
+    <p>Abbondiamo con le righe</p>
+    <script>
+      console.log(document.childElementCount); // prints 1
+      console.log(document.documentElement.childElementCount); // prints 2
+      console.log(document.head);
+      console.log("Head is type: " + document.head.nodeType);
+      console.log("Body has this number of childNodes: " + document.body.childNodes.length);
+      for (var i = 0; i < document.body.childNodes.length; i++) {
+	  console.log(document.body.childNodes[i]);
+      }
+    </script>
+  </body>
+</html>
+
